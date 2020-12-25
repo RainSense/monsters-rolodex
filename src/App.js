@@ -12,7 +12,8 @@ class App extends Component {
 
     this.state = {
       monsters : [],
-      searchField : ''
+      searchField : '',
+      title : ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -26,8 +27,6 @@ class App extends Component {
     fetch('https://jsonplaceholder.typicode.com/users')
     .then(response => response.json())
     .then(users => this.setState({monsters : users}))
-
-
   }
 
   handleChange (e)  {
@@ -36,8 +35,7 @@ class App extends Component {
 
 
   render() {
-
-    const { monsters, searchField } = this.state;
+    const { monsters, searchField, title } = this.state;
     const filterMonsters  = monsters.filter(monster => 
       monster.name.toLowerCase().includes(searchField.toLowerCase())
       );
